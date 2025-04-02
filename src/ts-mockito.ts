@@ -49,7 +49,7 @@ export function when<T>(method: any): any {
 }
 
 export function instance<T>(mockedValue: T): T {
-    const tsmockitoInstance = (mockedValue as any).__tsmockitoInstance as T;
+    let tsmockitoInstance = (mockedValue as any).__tsmockitoInstance as T;
     return tsmockitoInstance;
 }
 
@@ -64,9 +64,9 @@ export function capture<T0, T1, T2>(method: (a: T0, b: T1, c: T2) => any): ArgCa
 export function capture<T0, T1>(method: (a: T0, b: T1) => any): ArgCaptor2<T0, T1>;
 export function capture<T0>(method: (a: T0) => any): ArgCaptor1<T0>;
 export function capture(method: (...args: any[]) => any): ArgCaptor {
-    const methodStub: MethodToStub = method();
+    let methodStub: MethodToStub = method();
     if (methodStub instanceof MethodToStub) {
-        const actions = methodStub.mocker.getActionsByName(methodStub.name);
+        let actions = methodStub.mocker.getActionsByName(methodStub.name);
         return new ArgCaptor(actions);
     } else {
         throw Error("Cannot capture from not mocked object.");
