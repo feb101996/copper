@@ -40,7 +40,7 @@ describe("mocking", () => {
             when(mockedFoo.sampleNumber).thenReturn(42);
 
             // when
-            const value = foo.sampleNumber;
+            var value = foo.sampleNumber;
 
             // then
             expect(() => verify(mockedFoo.sampleNumber).once()).not.toThrow();
@@ -53,7 +53,7 @@ describe("mocking", () => {
             (when(mockedFoo.sampleNumber) as any).thenDoNothing();
 
             // when
-            const value = foo.sampleNumber;
+            var value = foo.sampleNumber;
 
             // then
             expect(() => verify(mockedFoo.sampleNumber).once()).not.toThrow();
