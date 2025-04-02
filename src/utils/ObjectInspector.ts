@@ -2,7 +2,7 @@ import * as _ from "lodash";
 
 export class ObjectInspector {
     public getObjectPrototypes(prototype: any): any[] {
-        const prototypes: any[] = [];
+        let prototypes: any[] = [];
         while (_.isObject(prototype) && (prototype !== Object.prototype && prototype !== Function.prototype)) {
             prototypes.push(prototype);
             prototype = Object.getPrototypeOf(prototype);
