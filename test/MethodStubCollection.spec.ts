@@ -4,10 +4,10 @@ describe("MethodStubCollection", () => {
     describe("empty stub collection", () => {
         it("returns -1 if doesn't find method stub", () => {
             // given
-            const methodStubCollection = new MethodStubCollection();
+            let methodStubCollection = new MethodStubCollection();
 
             // when
-            const index = methodStubCollection.getLastMatchingGroupIndex([]);
+            let index = methodStubCollection.getLastMatchingGroupIndex([]);
 
             // then
             expect(index).toBe(-1);
