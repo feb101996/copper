@@ -18,7 +18,7 @@ cases.forEach(testData => {
         let foo: Foo;
         let mockedBar: Bar;
         let bar: Bar;
-        const methodCallToStringConverter: MethodCallToStringConverter = new MethodCallToStringConverter();
+        var methodCallToStringConverter: MethodCallToStringConverter = new MethodCallToStringConverter();
 
         beforeEach(() => {
             mockedFoo = mock(testData.fooClass);
@@ -31,7 +31,7 @@ cases.forEach(testData => {
             describe("and no one occurred", () => {
                 it("doesn't throw error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
 
                     // when
                     try {
@@ -45,7 +45,7 @@ cases.forEach(testData => {
             describe("and one occurred but with different argument", () => {
                 it("doesn't throw error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue + 321);
 
                     // when
@@ -60,7 +60,7 @@ cases.forEach(testData => {
             describe("and one occurred", () => {
                 it("throws error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
 
                     // when
@@ -81,7 +81,7 @@ cases.forEach(testData => {
             describe("and just one occurred", () => {
                 it("doesn't throw error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
 
                     // when
@@ -131,7 +131,7 @@ cases.forEach(testData => {
             describe("but two has occurred", () => {
                 it("throws error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
                     foo.convertNumberToString(sampleValue);
 
@@ -153,7 +153,7 @@ cases.forEach(testData => {
             describe("and just two occurred", () => {
                 it("doesn't throw error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
                     foo.convertNumberToString(sampleValue);
 
@@ -173,7 +173,7 @@ cases.forEach(testData => {
             describe("but just one has occurred", () => {
                 it("throws error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
 
                     // when
@@ -194,7 +194,7 @@ cases.forEach(testData => {
             describe("and just three occurred", () => {
                 it("doesn't throw error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
                     foo.convertNumberToString(sampleValue);
                     foo.convertNumberToString(sampleValue);
@@ -215,7 +215,7 @@ cases.forEach(testData => {
             describe("but four has occurred", () => {
                 it("throws error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
                     foo.convertNumberToString(sampleValue);
                     foo.convertNumberToString(sampleValue);
@@ -239,7 +239,7 @@ cases.forEach(testData => {
             describe("but three has occurred", () => {
                 it("doesn't throw error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
                     foo.convertNumberToString(sampleValue);
                     foo.convertNumberToString(sampleValue);
@@ -256,7 +256,7 @@ cases.forEach(testData => {
             describe("but just one occurred", () => {
                 it("throws error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
 
                     // when
@@ -277,7 +277,7 @@ cases.forEach(testData => {
             describe("but one has occurred", () => {
                 it("doesn't throw error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
 
                     // when
@@ -292,7 +292,7 @@ cases.forEach(testData => {
             describe("but just three occurred", () => {
                 it("throws error", () => {
                     // given
-                    const sampleValue = 3;
+                    var sampleValue = 3;
                     foo.convertNumberToString(sampleValue);
                     foo.convertNumberToString(sampleValue);
                     foo.convertNumberToString(sampleValue);
@@ -314,7 +314,7 @@ cases.forEach(testData => {
         describe("when more than one method has same expectations", () => {
             it("method call counts are separated for every method", () => {
                 // given
-                const param = 3;
+                var param = 3;
 
                 // when
                 foo.getStringById(param);
@@ -332,8 +332,8 @@ cases.forEach(testData => {
                 describe("and method with first param has been called before second", () => {
                     it("doesn't throw error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
 
                         // when
                         foo.convertNumberToString(firstCallParam);
@@ -347,8 +347,8 @@ cases.forEach(testData => {
                 describe("but method with first param has been called after second", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         foo.convertNumberToString(secondCallParam);
                         foo.convertNumberToString(firstCallParam);
 
@@ -361,8 +361,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called before");
                         expect(error.message).toContain("but has been called after.");
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -372,8 +372,8 @@ cases.forEach(testData => {
                 describe("but method with first param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         foo.convertNumberToString(secondCallParam);
 
                         // when
@@ -385,8 +385,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain(`${methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any)}has never been called.`);
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
                     });
@@ -395,8 +395,8 @@ cases.forEach(testData => {
                 describe("but method with second param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         foo.convertNumberToString(firstCallParam);
 
                         // when
@@ -408,8 +408,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called before");
                         expect(error.message).toContain(`${methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any)}has never been called.`);
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -419,8 +419,8 @@ cases.forEach(testData => {
                 describe("but method with first and second param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
 
                         // when
                         let error;
@@ -431,8 +431,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called before");
                         expect(error.message).toContain("none of them has been called.");
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -446,8 +446,8 @@ cases.forEach(testData => {
                 describe("and method with first param has been called after second", () => {
                     it("doesn't throw error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
 
                         // when
                         foo.convertNumberToString(secondCallParam);
@@ -461,8 +461,8 @@ cases.forEach(testData => {
                 describe("but method with first param has been called before second", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         foo.convertNumberToString(firstCallParam);
                         foo.convertNumberToString(secondCallParam);
 
@@ -475,8 +475,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called after");
                         expect(error.message).toContain("but has been called before.");
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -486,8 +486,8 @@ cases.forEach(testData => {
                 describe("but method with first param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         foo.convertNumberToString(secondCallParam);
 
                         // when
@@ -499,8 +499,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called after");
                         expect(error.message).toContain(`${methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any)}has never been called.`);
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -510,8 +510,8 @@ cases.forEach(testData => {
                 describe("but method with second param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         foo.convertNumberToString(firstCallParam);
 
                         // when
@@ -523,8 +523,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called after");
                         expect(error.message).toContain(`${methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any)}has never been called.`);
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -534,8 +534,8 @@ cases.forEach(testData => {
                 describe("but method with first and second param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
 
                         // when
                         let error;
@@ -546,8 +546,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called after");
                         expect(error.message).toContain("none of them has been called.");
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -561,8 +561,8 @@ cases.forEach(testData => {
                 describe("and method with first param has been called before second", () => {
                     it("doesn't throw error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
 
                         // when
                         foo.convertNumberToString(firstCallParam);
@@ -576,8 +576,8 @@ cases.forEach(testData => {
                 describe("but method with first param has been called after second", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         bar.differentConvertNumberToString(secondCallParam);
                         foo.convertNumberToString(firstCallParam);
 
@@ -590,8 +590,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called before");
                         expect(error.message).toContain("but has been called after.");
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -601,8 +601,8 @@ cases.forEach(testData => {
                 describe("but method with first param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         bar.differentConvertNumberToString(secondCallParam);
 
                         // when
@@ -614,8 +614,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain(`${methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any)}has never been called.`);
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
                     });
@@ -624,8 +624,8 @@ cases.forEach(testData => {
                 describe("but method with second param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         foo.convertNumberToString(firstCallParam);
 
                         // when
@@ -637,8 +637,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called before");
                         expect(error.message).toContain(`${methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any)}has never been called.`);
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -648,8 +648,8 @@ cases.forEach(testData => {
                 describe("but method with first and second param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
 
                         // when
                         let error;
@@ -660,8 +660,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called before");
                         expect(error.message).toContain("none of them has been called.");
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -675,8 +675,8 @@ cases.forEach(testData => {
                 describe("and method with first param has been called after second", () => {
                     it("doesn't throw error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
 
                         // when
                         bar.differentConvertNumberToString(secondCallParam);
@@ -690,8 +690,8 @@ cases.forEach(testData => {
                 describe("but method with first param has been called before second", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         foo.convertNumberToString(firstCallParam);
                         bar.differentConvertNumberToString(secondCallParam);
 
@@ -704,8 +704,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called after");
                         expect(error.message).toContain("but has been called before.");
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -715,8 +715,8 @@ cases.forEach(testData => {
                 describe("but method with first param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         bar.differentConvertNumberToString(secondCallParam);
 
                         // when
@@ -728,8 +728,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called after");
                         expect(error.message).toContain(`${methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any)}has never been called.`);
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -739,8 +739,8 @@ cases.forEach(testData => {
                 describe("but method with second param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
                         foo.convertNumberToString(firstCallParam);
 
                         // when
@@ -752,8 +752,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called after");
                         expect(error.message).toContain(`${methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any)}has never been called.`);
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
@@ -763,8 +763,8 @@ cases.forEach(testData => {
                 describe("but method with first and second param has never been called", () => {
                     it("throws error", () => {
                         // given
-                        const firstCallParam = 5;
-                        const secondCallParam = 10;
+                        var firstCallParam = 5;
+                        var secondCallParam = 10;
 
                         // when
                         let error;
@@ -775,8 +775,8 @@ cases.forEach(testData => {
                         }
 
                         // then
-                        const firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
-                        const secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
+                        var firstCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedFoo.convertNumberToString(firstCallParam) as any));
+                        var secondCallMsgIndex = error.message.indexOf(methodCallToStringConverter.convert(mockedBar.differentConvertNumberToString(secondCallParam) as any));
                         expect(error.message).toContain("to be called after");
                         expect(error.message).toContain("none of them has been called.");
                         expect(firstCallMsgIndex).toBeLessThan(secondCallMsgIndex);
