@@ -5,10 +5,10 @@ describe("ReturnValueMethodStub", () => {
     describe("checking if given arg is applicable", () => {
         it("returns true when arg match", () => {
             // given
-            const testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(10)], 50);
+            let testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(10)], 50);
 
             // when
-            const result = testObj.isApplicable([10]);
+            let result = testObj.isApplicable([10]);
 
             // then
             expect(result).toBeTruthy();
@@ -16,10 +16,10 @@ describe("ReturnValueMethodStub", () => {
 
         it("returns false when arg doesn't match", () => {
             // given
-            const testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(10)], 50);
+            let testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(10)], 50);
 
             // when
-            const result = testObj.isApplicable([999]);
+            let result = testObj.isApplicable([999]);
 
             // then
             expect(result).toBeFalsy();
@@ -29,12 +29,12 @@ describe("ReturnValueMethodStub", () => {
     describe("checking if more than one arg is applicable", () => {
         it("returns true when all matches", () => {
             // given
-            const firstValue = 10;
-            const secondValue = 20;
-            const testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(firstValue), strictEqual(secondValue)], 50);
+            let firstValue = 10;
+            let secondValue = 20;
+            let testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(firstValue), strictEqual(secondValue)], 50);
 
             // when
-            const result = testObj.isApplicable([firstValue, secondValue]);
+            let result = testObj.isApplicable([firstValue, secondValue]);
 
             // then
             expect(result).toBeTruthy();
@@ -42,12 +42,12 @@ describe("ReturnValueMethodStub", () => {
 
         it("returns false when first arg doesn't match", () => {
             // given
-            const firstValue = 10;
-            const secondValue = 20;
-            const testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(firstValue), strictEqual(secondValue)], 50);
+            let firstValue = 10;
+            let secondValue = 20;
+            let testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(firstValue), strictEqual(secondValue)], 50);
 
             // when
-            const result = testObj.isApplicable([30, secondValue]);
+            let result = testObj.isApplicable([30, secondValue]);
 
             // then
             expect(result).toBeFalsy();
@@ -55,12 +55,12 @@ describe("ReturnValueMethodStub", () => {
 
         it("returns false when second arg doesn't match", () => {
             // given
-            const firstValue = 10;
-            const secondValue = 20;
-            const testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(firstValue), strictEqual(secondValue)], 50);
+            let firstValue = 10;
+            let secondValue = 20;
+            let testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(firstValue), strictEqual(secondValue)], 50);
 
             // when
-            const result = testObj.isApplicable([firstValue, 30]);
+            let result = testObj.isApplicable([firstValue, 30]);
 
             // then
             expect(result).toBeFalsy();
@@ -68,12 +68,12 @@ describe("ReturnValueMethodStub", () => {
 
         it("returns false when both args doesn't match", () => {
             // given
-            const firstValue = 10;
-            const secondValue = 20;
-            const testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(firstValue), strictEqual(secondValue)], 50);
+            let firstValue = 10;
+            let secondValue = 20;
+            let testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [strictEqual(firstValue), strictEqual(secondValue)], 50);
 
             // when
-            const result = testObj.isApplicable([30, 40]);
+            let result = testObj.isApplicable([30, 40]);
 
             // then
             expect(result).toBeFalsy();
@@ -83,11 +83,11 @@ describe("ReturnValueMethodStub", () => {
     describe("getting mocked value", () => {
         it("returns it", () => {
             // given
-            const mockedValue = 50;
-            const testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [], mockedValue);
+            let mockedValue = 50;
+            let testObj: ReturnValueMethodStub = new ReturnValueMethodStub(0, [], mockedValue);
 
             // when
-            const result = testObj.getValue();
+            let result = testObj.getValue();
 
             // then
             expect(result).toEqual(mockedValue);
