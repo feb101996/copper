@@ -4,8 +4,8 @@ import {Bar} from "./utils/Bar";
 
 describe("mocking", () => {
     describe("mocking abstract class", () => {
-        let mockedFoo: SampleAbstractClass;
-        let foo: SampleAbstractClass;
+        var mockedFoo: SampleAbstractClass;
+        var foo: SampleAbstractClass;
 
         it("does not execute getter or setter code (not throwing null pointer exception)", () => {
             // given
@@ -65,7 +65,7 @@ describe("mocking", () => {
     });
 
     describe("mocking class with hasOwnProperty", () => {
-        let mockedFoo: SampleClassWithHasOwnProperty;
+        var mockedFoo: SampleClassWithHasOwnProperty;
 
         it("does not attempt to mock hasOwnProperty (which would throw)", () => {
             // given
@@ -79,8 +79,8 @@ describe("mocking", () => {
     });
 
     describe("mocking generic class", () => {
-        let mockedFoo: SampleGeneric<SampleInterface>;
-        let foo: SampleGeneric<SampleInterface>;
+        var mockedFoo: SampleGeneric<SampleInterface>;
+        var foo: SampleGeneric<SampleInterface>;
 
         it("does not execute getter or setter code (not throwing null pointer exception)", () => {
             // given
