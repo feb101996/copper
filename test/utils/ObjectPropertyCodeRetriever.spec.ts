@@ -3,7 +3,7 @@ import {ObjectPropertyCodeRetriever} from "../../src/utils/ObjectPropertyCodeRet
 describe("ObjectPropertyCodeRetriever", () => {
     describe("Properties code retrieving", () => {
         var objectPropertyCodeRetriever: ObjectPropertyCodeRetriever = new ObjectPropertyCodeRetriever();
-        let object: any;
+        const object: any;
 
         beforeEach(() => {
             object = {
