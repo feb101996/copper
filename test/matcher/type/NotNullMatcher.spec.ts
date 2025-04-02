@@ -5,10 +5,10 @@ describe("NotNullMatcher", () => {
     describe("checking if null matches", () => {
         it("returns false", () => {
             // given
-            const testObj: Matcher = notNull();
+            let testObj: Matcher = notNull();
 
             // when
-            const result = testObj.match(null);
+            let result = testObj.match(null);
 
             // then
             expect(result).toBeFalsy();
@@ -18,10 +18,10 @@ describe("NotNullMatcher", () => {
     describe("checking if false matches", () => {
         it("returns true", () => {
             // given
-            const testObj: Matcher = notNull();
+            let testObj: Matcher = notNull();
 
             // when
-            const result = testObj.match(false);
+            let result = testObj.match(false);
 
             // then
             expect(result).toBeTruthy();
@@ -31,10 +31,10 @@ describe("NotNullMatcher", () => {
     describe("checking if zero matches", () => {
         it("returns true", () => {
             // given
-            const testObj: Matcher = notNull();
+            let testObj: Matcher = notNull();
 
             // when
-            const result = testObj.match(0);
+            let result = testObj.match(0);
 
             // then
             expect(result).toBeTruthy();
@@ -44,10 +44,10 @@ describe("NotNullMatcher", () => {
     describe("checking if sample object matches", () => {
         it("returns true", () => {
             // given
-            const testObj: Matcher = notNull();
+            let testObj: Matcher = notNull();
 
             // when
-            const result = testObj.match({});
+            let result = testObj.match({});
 
             // then
             expect(result).toBeTruthy();
@@ -57,10 +57,10 @@ describe("NotNullMatcher", () => {
     describe("checking if sample string matches", () => {
         it("returns true", () => {
             // given
-            const testObj: Matcher = notNull();
+            let testObj: Matcher = notNull();
 
             // when
-            const result = testObj.match("sampleString");
+            let result = testObj.match("sampleString");
 
             // then
             expect(result).toBeTruthy();
